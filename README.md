@@ -41,19 +41,29 @@ The game involves a tree that drops apples. The player controls a basket that mo
 
 ## Scripts
 
-- **Apple.cs**: Handles apple behavior like falling and destroying when out of bounds.
-- **AppleTree.cs**: Manages the apple tree's movement and apple dropping logic.
-- **ApplePicker.cs**: Controls the overall game logic, like tracking the number of baskets and what happens when an apple is missed.
-- **Basket.cs**: Manages the basket's movement and catching apples.
-- **ScoreCounter.cs**: A UI component that updates and displays the current score.
-- **HighScore.cs**: Tracks and displays the high score.
-- **DifficultyScreen.cs**: Manages the game's difficulty setting and starts the game.
+- **AppleAuthoring.cs**: Serves as an authoring component for apples, defining properties such as fall speed. When attached to a GameObject, it provides the data needed to create an ECS entity representing an apple in the game.
+
+- **AppleTreeAuthoring.cs**: Acts as an authoring component for the apple tree. It specifies parameters like movement speed, the edges of the screen for bouncing behavior, and the chance to change direction. This script helps convert the apple tree GameObject into an ECS entity with these properties.
+
+- **BasketAuthoring.cs**: Used as an authoring component for baskets, specifying properties like movement speed. This script is responsible for converting the basket GameObject into an ECS entity, allowing the game to handle baskets in the ECS context.
+
+- **BasketCollisionSystem.c**s: An ECS system that detects collisions of baskets with other entities, such as apples. When a collision is detected, it can trigger the destruction of apples and update game state accordingly, like reducing the number of available baskets.
+
+- **BasketMovementSystem.cs**: This ECS system is responsible for updating the position of basket entities based on player input, such as mouse movement, allowing the player to catch falling apples with the basket.
+
+- **RandomDirectionChangeSystem.cs**: An ECS system that periodically changes the direction of the apple tree entity's movement. It uses a random chance based on a specified probability to determine when the apple tree should change direction.
+
+- **TreeMovementSystem.cs**: Manages the back-and-forth movement of the apple tree entity within the bounds of the game screen. It updates the tree's position each frame and reverses direction when it reaches the specified edges.
 
 ## Screenshots
 
 **Game Performance via OOP**
 
+![OOP Implementtaion](https://cdn.discordapp.com/attachments/1103515433862172673/1172340959053352970/OOP.jpg?ex=655ff699&is=654d8199&hm=a8e42554c7314811475e62c27c7e1fb66357bf387e0caa10e52ad3fa2d4a2f8b&)  
+
 **Game Performance via ECS**
+
+![ECS Implementation](https://cdn.discordapp.com/attachments/1103515433862172673/1172340967966257182/ECS.jpg?ex=655ff69b&is=654d819b&hm=0c3f0a6907fd39f9c29e7e20dab83ac6a2d4f3605bd4e1aee7ec1b4afcf9aeb2&)  
 
 ## Contributing
 

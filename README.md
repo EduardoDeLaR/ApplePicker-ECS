@@ -10,6 +10,7 @@ An exciting and challenging game where players aim to catch falling apples in ba
 - [Usage](#usage)
 - [Scripts](#scripts)
 - [Screenshots](#screenshots)
+- [Observations](#observations)
 - [Contributing](#contributing)
 - [Credits](#credits)
 
@@ -64,6 +65,10 @@ The game involves a tree that drops apples. The player controls a basket that mo
 **Game Performance via ECS**
 
 ![ECS Implementation](https://cdn.discordapp.com/attachments/1103515433862172673/1172340967966257182/ECS.jpg?ex=655ff69b&is=654d819b&hm=0c3f0a6907fd39f9c29e7e20dab83ac6a2d4f3605bd4e1aee7ec1b4afcf9aeb2&)  
+
+## Observations
+
+The ECS version of Apple Picker performs better than the OOP version primarily because ECS optimizes data access patterns for the CPU, grouping similar components together in memory. This allows the game to process large numbers of entities efficiently, handling data locality and enabling better CPU cache utilization. Additionally, ECS inherently supports parallel processing, which means that the game logic for handling apples, baskets, and tree movement can be executed simultaneously across multiple CPU cores, this improves performance over the OOP version where objects are typically updated sequentially and can suffer from cache thrashing due to less optimal memory layouts.
 
 ## Contributing
 
